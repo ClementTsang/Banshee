@@ -1,0 +1,9 @@
+fullscreen = 1
+screenheight = 705
+screenwidth = 1250
+newplayer = 0
+volume = 11
+mouseOne = d
+mouseTwo = f
+visualizer = 1
+cheats = 0
