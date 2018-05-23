@@ -1,0 +1,198 @@
+/////Changelog - Starting from 12/9/16/////
+
+12/9/16:
+-Attempted fix for memory issues with reading from timestamp vector.  Converted from using pointer to reference.
+-Optimization in terms of code structure
+
+12/10/16
+-Further attempted fix on memory issues.  This time, forced the timestamps vector from main to only
+pass when a new beat is added.  Else, nothing is passed.
+-Mouse events in terms of watching for certain mouse inputs and movement.
+-Added cursor textures
+
+12/11/16
+-Keyboard events in terms of watching for certain key inputs.
+
+12/13/16
+-Keyboard inputs were further worked on.  Some optimization.
+-Hitmarkers were further developed.
+
+12/14/16
+-Ring indicator added.
+-Delays worked on.  Noted that by default, there appears to be a ONE SECOND delay (on average)
+between detect and spawning.  However, it seems to be negligible.  Further testing required.
+-MAYBE I will just delay when the new beat is passed by the delay.  Seems easier.  But it means seperating the
+update method into MORE threads!
+
+12/15/16
+-Delays work now!
+
+12/17/16 - 12/18/16
+-Hitmarkers now support late and early hits
+-Spawning algorithim was tweaked to allow for more diverse spreads
+-Further hitmarker additions.  Now there are numbers to indicate spawning order.  Next in line -
+lines to indicate direction!
+-Cursor now correctly lights up when you click or tap
+-Fixed crashing related to mouse events.  This was due to calling non-existing hitmarkers.  Oops.
+-Cleaned up some code to make it more readable.
+-Lots of new images were added.  Woot.
+
+12/19/16
+-Hitmarker indicator lights up when player can hit it for max.
+-Difficulty was implemented - sort of.  The basic idea is that the time in between beats is decreased as difficulty goes up.
+Furthermore, the idea is to make it so the grace period (more on that later) is lower, as well as maaybe removing the hitmarker
+indicator.  No, playing at 8 beats/second is not easy - that's about 480 beats a minute.
+-Grace period!  Before, you had to hit it at a pixel perfect 1000 ms from the spawning to get a hit.  Now, you have about
+300 ms (800-1100 ms from spawn) to hit it.  This is indicated by the indicator (Wow!) - this may drop to 200 ms though
+(800-1000 ms from spawn).
+-More XY beat spawn algorithim tweaks.
+-Point prompts come up if you hit or come close!  Also, if you miss entirely.
+-Point passing was touched on.
+-Scaling based on screen size must be added!
+-Ehhh... delays are acting up a bit again!
+
+12/20/16
+-Delays FIXED!  For now, at least...
+-Image quality went up.
+-Points system implemented, but graphics part is not.
+-Hit timings were touched again for 50 points.
+-0 points added for missing.  Don't miss!
+-Scaling still needs to be done!
+-CPU -> initWindow() is causing 25%!
+
+12/21/16
+-Points system is done.
+-FPS caps at 60 using VSync
+
+12/23/16
+-FPS caps at 120-130, instead of using VSync.  VSync was giving issues on bad PCs.
+-Hitsounds added.  To be tweaked.
+-Fixed keyboard inputs.
+
+12/24/16
+-Menu created, and basic button system added.
+-Reworked main.cpp.  Optimized CPU usage due to how the menu was pushing it to about 40%.
+
+12/25/16 - Merry Christmas!
+-Menu further tweaked.
+-File reading dabbled on.
+-More calibration for beat detection and hitmarkers
+-Issues with first game runs. <----- Kinda fixed by sticking a 3 second delay before starting.
+
+12/26/16
+-Spent time shopping
+-Beat consistancy fixed.
+-Added guiding lines to guide players to next beat.
+-Added colour coding to guide players when a bunch of beats spawn.
+-Menu system basically half reworked.  Mainly regarding the deletion and recreation of the
+FMOD sound system when exiting.
+-Pausing implemented.
+-ISSUES:  Pausing not fully working, the wait period should pause as well if you pause.
+
+12/28/16
+-Pausing works 90% now.  Just need a timer to wind down when you unpause to give a chance for the player
+to prepare.
+-Menu for pausing added.  You can resume and quit, can't retry yet.
+
+12/29/16
+-You can now fail!
+-Some issue regarding menu's lag... or something.
+
+1/01/17
+-Happy New Year!
+-Failing menu done - mostly.  Still need some kind of animation if you fail or something.  Too abrupt quitting.
+-Issue regarding buttons fixed.  Was due to bad hitboxes.
+-Various tweaks in the code.
+-ISSUES:  PAUSE AFTER UNPAUSING, THAT "POP" WHEN YOU STOP OR FAIL.  YOU ALSO NEED MARKERS TO INDICATE HOW CLOSE YOU TO FAILING.
+
+1/02/17
+-Retrying now works for normal pausing.
+
+1/03/17
+-SONG FILE PASSING IS DONE.  NOW TO DISPLAY.  USE TTF.
+-BACK TO VSYNC
+-PAUSE AFTER UNPAUSING - USE OSU.  POP.  SOME MENU ELEMENTS ARE PIXELY
+
+1/04/17
+-Issues regarding pausing and failing worked on.  Some kind of stalling on markers that are near deletion aren't
+working.
+
+1/05/17
+-Pausing now works better.  A marker must be hit after unpausing before resuming.  This marker spawns
+near the closest hitmarker.
+-Pause overlay added.
+
+1/06/17
+-Issues with offsets fixed.
+
+1/07-08/17
+-Now able to select songs.
+-Implementation of ttf fonts.
+-Some tinkering with ID3.
+
+1/09/17
+-PROPER selection now implemented.  ID3 works.
+-Mouse buttons now work in selection screen.
+-Beginnings of file reading from text for options.
+-NEED:  POP, MORE CALIBRATION, MAYBE REPLACE MENU OPTIONS WITH TEXT, COMPLETION SCREEN, AI, TUTORIAL
+
+1/10/17
+-Attempt (that works!) in fixing beat detection by using BPM.
+-Pass screen added.  Kinda done.
+-NEED:  POP, TEXT SCALING, AI, TUTORIAL.
+-MAYBE CALIBRATION?
+-LABEL STUFF
+-BAH
+
+1/11/17
+-Seperating window and BeatDetector from base.  Make window, well, window class.  Game functions are another class.
+-Pass screen finalized... kinda.  Still need hitboxes.
+
+1/14/17
+-Graph visualization (need to time it properly)
+-Score not resetting
+-Prettier menus... kinda.
+
+1/15/17
+-Graph visualization done.  For now.
+-Fixed offset issues.  Temporarily reverted BeatDetector.cpp to Jan. 10, 2017.
+-Options!
+-Check if accuracy is correct...
+-Also rework spawning algorithim.  A bit too far.
+
+1/16-22/17
+-Finish up basic options systems. ---- Done, need UI to go further.
+-Fixed spawning.  ---- Need testing.
+-Checked accuracy.  ---- Yep, still fine.
+-MENU:  DISPLAY ARTIST ---- Yep, done.
+-DIFFICULTY
+-AI? ---- NAHHHH LETS NOT
+-COLOURS
+-PRETTY MENUS
+-TUTORIAL
+-CHECK WHAT BROKE ---- it was due to me not resetting scrollY
+-CHECK WHY IT LAGS
+-ESC WHEN GAME IS DONE AND PASSED
+
+1/23/17
+-Prettier menus ---- STARTED AND PRETTY GOOD
+-Lag, both in game and when done game.  Lag likely arise from closing the beatdetector, or from switching ---- still no idea why
+-ESC WHEN GAME is done and/or passed. ---- WOOO
+-Volume slider works for the music.  Adjust volume.  ---- WOOOOO
+-Options is done.  Completely.  ---- WOOOOOO
+-Values added to save as a backup for resolution. ---- WOOOO
+-WORKING KEYBINDS WOLOLOL
+
+-HIGH SCORE?
+-Tutorial
+
+1/24/17
+-Menus look a lot nicer now.
+-High score system added.
+-Tutorial system added.
+
+1/25/17
+-Some more clarity in menu selection screen
+-Display volume when adjusting
+-Arrow keys work on the selection screen.
+-Confirm if quitting.
