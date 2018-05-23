@@ -1,28 +1,3 @@
-To do list:
--Hitmarkers  <- CHECK
--Delays <- CHECK
--More calibration <- CHECK
--SDL <- CHECK
--MORE SDL
--DELAYED HITMARKERS <- CHECK
--Mouse detection <- CHECK
--If it hits the max 5 times, force it to minus a bunch.  Same with min, but plus a bunch.  What terminology! <- CHECK
--MENU
--PRETTY STUFF
-
-BUGS:
--CPU Usage
--Sometimes
-
-/////Basic summary/////
--Game detects beats
--Beats spawn based on dominant beat (x) and spectral flux (y).  Dominant beat is the peak at the time,
-and spectral flux is how quickly the spectrum is changing
--Hit prompts
-
-*/
-
-/*
 /////Changelog - Starting from 12/9/16/////
 
 12/9/16:
