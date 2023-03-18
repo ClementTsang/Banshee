@@ -3,3 +3,5 @@ Banshee is an Osu and AudioSurf inspired game that was done for a Gr. 12 CS fina
 
 ## Installation
 Either clone the repository, or simply download the release file.
+
+If you want to manually build, you'll need Visual Studio and a few libraries (SDL, fmod, etc.).
